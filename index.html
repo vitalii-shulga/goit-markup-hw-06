@@ -439,8 +439,8 @@
           <form>
             <label for="user_email" class="footer-title">ПОДПИШИТЕСЬ НА РАССЫЛКУ</label>
             <div class="subscribe-container">
-              <input type="email" name="email" id="user_email" placeholder="E-mail" />
-              <button type="submit" class="subscribe-button button">
+              <input type="email" name="email" placeholder="E-mail" id="user_email" />
+              <button type="submit" class="btn-submit button">
                 Подписаться
                 <svg width="24" height="24" class="icon">
                   <use href="./images/icons.svg#icon-send"></use>
@@ -455,6 +455,50 @@
     <!-- модальное окно -->
     <div class="backdrop is-hidden" data-modal>
       <div class="modal">
+        <form class="form">
+          <p class="form-title">Оставьте свои данные, мы вам перезвоним</p>
+
+          <label class="form-label" for="user_name">Имя</label>
+          <div class="input-container">
+            <input class="form-field input" type="text" name="username" id="user_name" />
+            <svg class="icon" width="18px" height="18px">
+              <use href="./images/icons.svg#icon-person"></use>
+            </svg>
+          </div>
+
+          <label class="form-label" for="user_phone">Телефон</label>
+          <div class="input-container">
+            <input class="form-field input" type="tel" name="phone" id="user_phone" />
+            <svg class="icon" width="18px" height="18px">
+              <use href="./images/icons.svg#icon-phone"></use>
+            </svg>
+          </div>
+
+          <label class="form-label" for="user_email">Почта</label>
+          <div class="input-container">
+            <input class="form-field input" type="email" name="email" id="user_email" />
+            <svg class="icon" width="18px" height="18px">
+              <use href="./images/icons.svg#icon-email"></use>
+            </svg>
+          </div>
+
+          <label class="form-label">Комментарий</label>
+          <textarea
+            class="form-field textarea"
+            name="feedback"
+            rows="6"
+            placeholder="Введите текст"
+          ></textarea>
+
+          <label class="checkbox">
+            <input type="checkbox" name="agreement" value="user_agreement" />
+            Соглашаюсь с рассылкой и принимаю
+            <a class="link" href="">Условия договора</a>
+          </label>
+
+          <button class="btn-submit button" type="submit">Отправить</button>
+        </form>
+
         <button
           class="btn-close button"
           type="button"
