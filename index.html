@@ -437,9 +437,9 @@
         </div>
         <div class="subscribe footer-block">
           <form>
-            <label for="user_email" class="footer-title">ПОДПИШИТЕСЬ НА РАССЫЛКУ</label>
+            <label for="email" class="footer-title">ПОДПИШИТЕСЬ НА РАССЫЛКУ</label>
             <div class="subscribe-container">
-              <input type="email" name="email" placeholder="E-mail" id="user_email" />
+              <input type="email" name="email" placeholder="E-mail" id="email" />
               <button type="submit" class="btn-submit button">
                 Подписаться
                 <svg width="24" height="24" class="icon">
@@ -482,18 +482,20 @@
             </svg>
           </div>
 
-          <label class="form-label">Комментарий</label>
+          <label class="form-label" for="user_comment">Комментарий</label>
           <textarea
             class="form-field textarea"
             name="feedback"
-            rows="6"
             placeholder="Введите текст"
+            id="user_comment"
           ></textarea>
 
-          <label class="checkbox">
-            <input type="checkbox" name="agreement" value="user_agreement" />
-            Соглашаюсь с рассылкой и принимаю
-            <a class="link" href="">Условия договора</a>
+          <label class="checkbox-label">
+            <input class="checkbox-input" type="checkbox" name="agreement" value="user_agreement" />
+            <span class="checkbox-icon"></span>
+            <span
+              >Соглашаюсь с рассылкой и принимаю <a class="link" href="">Условия договора</a></span
+            >
           </label>
 
           <button class="btn-submit button" type="submit">Отправить</button>

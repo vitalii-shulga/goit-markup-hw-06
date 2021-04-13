@@ -687,6 +687,8 @@ body {
   line-height: 1.14;
   letter-spacing: 0.01em;
   color: var(--txt-main-color);
+
+  transition: border var(--time) var(--timing-function);
 }
 
 .form-field.input {
@@ -713,25 +715,59 @@ textarea::placeholder {
   transform: translateY(-50%);
   fill: var(--txt-title-color);
   outline: none;
+
+  transition: fill var(--time) var(--timing-function);
 }
 
+.form-field:hover,
 .form-field:focus {
   border: 1px solid var(--accent-color);
 }
 
-.checkbox {
-  display: block;
+.form-field:hover ~ .icon,
+.form-field:focus ~ .icon {
+  fill: var(--accent-color);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 30px;
 
   font-size: 14px;
   line-height: 1.71;
   letter-spacing: 0.03em;
-  text-align: center;
 }
 
-.checkbox .link {
+.checkbox-label .link {
   color: var(--accent-color);
   text-decoration: underline;
+}
+
+.checkbox-input {
+  appearance: none;
+}
+
+.checkbox-icon {
+  display: inline-block;
+  margin-right: 7px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--txt-title-color);
+  border-radius: 2px;
+
+  transition: border-color var(--time) var(--timing-function),
+    background-color var(--time) var(--timing-function),
+    background-image var(--time) var(--timing-function);
+}
+
+.checkbox-input:checked + .checkbox-icon {
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  background-image: url(../images/icons/check.svg);
+  background-size: contain;
+  background-origin: border-box;
 }
 
 .form .btn-submit {
