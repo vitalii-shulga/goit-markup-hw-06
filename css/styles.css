@@ -9,7 +9,7 @@
   --bg-gray-color: #f5f4fa;
   --icon-color: #afb1b8;
   --accent-color: #2196f3;
-  --btn-accent-color: #188ce8;
+  --second-accent-color: #188ce8;
   --border-color: #eeeeee;
 
   --grid-item: 4;
@@ -67,13 +67,15 @@ img {
 
 .visually-hidden {
   position: absolute !important;
-  clip: rect(1ps, 1px, 1px, 1px);
-  clip: rect(1ps, 1px, 1px, 1px);
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
   padding: 0 !important;
   border: 0 !important;
-  height: 1px !important;
-  width: 1px !important;
   overflow: hidden;
+  clip: rect(1ps, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* common stiles */
@@ -156,7 +158,7 @@ body {
 
 .btn-submit:hover,
 .btn-submit:focus {
-  background-color: var(--btn-accent-color);
+  background-color: var(--second-accent-color);
 }
 
 .btn-filter {
@@ -630,6 +632,26 @@ body {
   pointer-events: none;
 }
 
+/* переопределение цветов */
+.dark-bg .title,
+.dark-bg .button,
+.dark-bg .logo,
+.dark-bg .post-address {
+  color: var(--txt-dark-bg-color);
+}
+
+.dark-bg .address-item {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.link:hover,
+.link:focus,
+.link.current {
+  color: var(--accent-color);
+}
+
+/* модальное окно */
+
 .modal {
   position: absolute;
   top: 50%;
@@ -665,6 +687,13 @@ body {
   text-align: center;
 }
 
+.form-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
 .form-label {
   margin-bottom: 4px;
   font-size: 12px;
@@ -672,13 +701,11 @@ body {
   letter-spacing: 0.01em;
 }
 
-.input-container {
-  position: relative;
-  margin-bottom: 10px;
-}
-
-.form-field {
+.form-input {
   width: 100%;
+  height: 40px;
+  padding-left: 42px;
+  padding-right: 12px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
   outline: none;
@@ -686,50 +713,44 @@ body {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.01em;
-  color: var(--txt-main-color);
 
   transition: border var(--time) var(--timing-function);
 }
 
-.form-field.input {
-  height: 40px;
-  padding-left: 42px;
-  padding-right: 12px;
-}
-
 .form-field.textarea {
   margin-bottom: 20px;
+}
+
+.form-input.textarea {
   height: 120px;
   padding: 12px 16px;
   resize: none;
 }
 
-textarea::placeholder {
+.form-input.textarea::placeholder {
   color: rgba(117, 117, 117, 0.5);
 }
 
-.form .icon {
+.form-field .icon {
   position: absolute;
   top: 50%;
   left: 12px;
   transform: translateY(-50%);
   fill: var(--txt-title-color);
-  outline: none;
+  pointer-events: none;
 
   transition: fill var(--time) var(--timing-function);
 }
 
-.form-field:hover,
-.form-field:focus {
-  border: 1px solid var(--accent-color);
+.form-field:focus-within > .form-input {
+  border-color: var(--accent-color);
 }
 
-.form-field:hover ~ .icon,
-.form-field:focus ~ .icon {
+.form-field:focus-within > .icon {
   fill: var(--accent-color);
 }
 
-.checkbox-label {
+.checkbox {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -740,30 +761,33 @@ textarea::placeholder {
   letter-spacing: 0.03em;
 }
 
-.checkbox-label .link {
+.checkbox .link {
+  display: inline-block;
   color: var(--accent-color);
   text-decoration: underline;
+
+  transition: color var(--time) var(--timing-function);
 }
 
-.checkbox-input {
-  appearance: none;
+.checkbox .link:hover,
+.checkbox .link:focus {
+  color: var(--second-accent-color);
 }
 
 .checkbox-icon {
   display: inline-block;
   margin-right: 7px;
   width: 16px;
-  height: 16px;
+  height: 15px;
   border: 2px solid var(--txt-title-color);
   border-radius: 2px;
 
-  transition: border-color var(--time) var(--timing-function),
-    background-color var(--time) var(--timing-function),
-    background-image var(--time) var(--timing-function);
+  transition: background-color var(--time) var(--timing-function),
+    border-color var(--time) var(--timing-function);
 }
 
 .checkbox-input:checked + .checkbox-icon {
-  border-color: var(--accent-color);
+  border-color: transparent;
   background-color: var(--accent-color);
   background-image: url(../images/icons/check.svg);
   background-size: contain;
@@ -798,22 +822,4 @@ textarea::placeholder {
 .btn-close:hover .icon-close,
 .btn-close:focus .icon-close {
   fill: var(--accent-color);
-}
-
-/* переопределение цветов */
-.dark-bg .title,
-.dark-bg .button,
-.dark-bg .logo,
-.dark-bg .post-address {
-  color: var(--txt-dark-bg-color);
-}
-
-.dark-bg .address-item {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.link:hover,
-.link:focus,
-.link.current {
-  color: var(--accent-color);
 }
